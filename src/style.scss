@@ -1,0 +1,29 @@
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.videoContainer{
+  width: 480px;
+  position: relative;
+
+  #webcamVideo {
+    width: 480px;
+    height: 360px;
+    border-radius: 10px;
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+  }
+
+  #videoCanvas {
+    width: 480px;
+    height: 360px;
+    position:absolute;
+    top: 0;
+    left: 0;
+  }
+}

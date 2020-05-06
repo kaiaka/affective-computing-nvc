@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div class="videoContainer">
+        <video id='webcamVideo' playsinline="" width="480" height="360">
+        </video>
+        <canvas id="videoCanvas"  width="480" height="360">
+        </canvas>
+
+        <button class="mdc-button foo-button" id="btnWebcam">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Capture</span>
+        </button>
+        <button class="mdc-button foo-button" id="btnPoseNet">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">PoseNet</span>
+        </button>
+    </div>
+</body>
+
+</html>
