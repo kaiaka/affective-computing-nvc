@@ -1,7 +1,9 @@
 ### Installation
-Install node if haven't done yet.
+Install Node.js if you haven't done yet.
+https://nodejs.org/en/download/
+
 ```
-brew install nod
+brew install node
 ```
 Install node modules as defined in package.json
 ```
