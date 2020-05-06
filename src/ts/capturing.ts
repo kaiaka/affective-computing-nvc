@@ -1,6 +1,7 @@
 import * as posenet from '@tensorflow-models/posenet';
 import {PoseNet, PoseNetOutputStride} from "@tensorflow-models/posenet";
 import {PoseNetArchitecture, PoseNetDecodingMethod, PosenetInput} from "@tensorflow-models/posenet/dist/types";
+import {AvatarWindow} from "./avatar";
 
 export class CaptureWebcam {
     net: PoseNet;
@@ -16,6 +17,7 @@ export class CaptureWebcam {
     requestId;
     btnWebcam;
     btnPoseNet;
+    avatar: AvatarWindow;
 
 
     public start(): void {
@@ -61,7 +63,6 @@ export class CaptureWebcam {
         });
     }
 
-
     public poseLoop() {
         if(!!this.net && this.poseDetectionRunning) {
             this.net.estimateSinglePose(this.video, {flipHorizontal: false})
@@ -70,6 +71,20 @@ export class CaptureWebcam {
 
                         // draw
                         this.drawPose(pose);
+
+                        // calc head rotation
+                        const nose = pose.keypoints[0];
+                        const leftEye = pose.keypoints[1];
+                        const rightEye = pose.keypoints[2];
+                        if(nose.score > .5 && leftEye.score > .5 && rightEye.score > .5){
+                            const headRotZ = Math.atan2(leftEye.position.y - rightEye.position.y, leftEye.position.x - rightEye.position.x);
+                            const headRotZDeg = headRotZ * 180 / Math.PI;
+                            //console.log(headRotZDeg + ' degree');
+
+                            if(!!this.avatar) {
+                                this.avatar.setHeadRotation(0, 0, headRotZ);
+                            }
+                        }
 
                         // request a new frame
                         this.requestId = requestAnimationFrame(() => this.poseLoop());
@@ -139,7 +154,7 @@ export class CaptureWebcam {
             }
 
             // draw joints (link two points, 5,6=shoulders 7,8=elbows 9,10=wrists)
-            /*const joints = [[5,6], [5,7], [6,8], [7,9], [8,10]];
+            /*const joints = [[5,6], [5,7], [6,8], [7,9], [8, 10], [5, 11], [6, 12], [11, 13], [12, 14]];
             for (let j of joints){
                 const a = pose.keypoints[j[0]];
                 const b = pose.keypoints[j[1]];
@@ -149,7 +164,8 @@ export class CaptureWebcam {
                     this.ctx.lineTo(b.position.x, b.position.y);
                     this.ctx.stroke();
                 }
-            }*/
+            }
+            */
         }
     }
 }
