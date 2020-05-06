@@ -7,23 +7,58 @@ body {
   text-align: center;
 }
 
-.videoContainer{
-  width: 480px;
-  position: relative;
+.content {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-content:center;
+  min-width: 540px;
+  padding: 30px 10px 30px 10px;
 
-  #webcamVideo {
-    width: 480px;
-    height: 360px;
-    border-radius: 10px;
-    filter: grayscale(1);
-    -webkit-filter: grayscale(1);
+  .btn {
+    width: 100px;
+    height: 34px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: cadetblue;
+    border: none;
+
+    &:hover {
+      background-color: darkseagreen;
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline:0;
+    }
+
+    &:disabled {
+      background-color: darkgray;
+      color: lightgray;
+    }
   }
 
-  #videoCanvas {
+  .videoContainer {
     width: 480px;
-    height: 360px;
-    position:absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+
+    #webcamVideo {
+      width: 480px;
+      height: 360px;
+      border-radius: 10px;
+      filter: grayscale(1);
+      -webkit-filter: grayscale(1);
+    }
+
+    #videoCanvas {
+      width: 480px;
+      height: 360px;
+      border-radius: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
+
 }

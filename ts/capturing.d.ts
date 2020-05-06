@@ -10,6 +10,7 @@ export declare class CaptureWebcam {
     poseDetectionRunning: boolean;
     requestId: any;
     start(): void;
+    private initPoseNet;
     poseLoop(): void;
     togglePoseDetection(): void;
     startPoseDetection(): void;

@@ -5,5 +5,5 @@ const cap = new CaptureWebcam();
 cap.start();
 
 // ui handling
-document.getElementById('btnWebcam').onclick = a => {cap.toggleWebcam();};
-document.getElementById('btnPoseNet').onclick = a => {cap.togglePoseDetection();};
+document.querySelector<HTMLElement>('#btnWebcam').onclick = a => {cap.toggleWebcam();};
+document.querySelector<HTMLElement>('#btnPoseNet').onclick = a => {cap.togglePoseDetection();};

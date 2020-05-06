@@ -28,6 +28,12 @@ module.exports = {
             template: './src/index.html',
             filename: 'index.html'
         })
-    ]
+    ],
+
+    // dev server
+    devServer: {  // configuration for webpack-dev-server
+        contentBase: './dist',  //source of static assets
+        port: 7700, // port to run dev-server
+    }
 
 };
